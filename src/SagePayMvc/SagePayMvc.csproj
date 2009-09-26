@@ -32,7 +32,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mvc\System.Web.Abstractions.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mvc\System.Web.Routing.dll</HintPath>
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -45,7 +61,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionResults\ErrorResult.cs" />
+    <Compile Include="ActionResults\InvalidSignatureResult.cs" />
+    <Compile Include="ActionResults\SagePayResult.cs" />
+    <Compile Include="ActionResults\TransactionNotFoundResult.cs" />
+    <Compile Include="ActionResults\ValidOrderResult.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="AddressType.cs" />
+    <Compile Include="BasketItem.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DefaultUrlResolver.cs" />
+    <Compile Include="HttpRequestSender.cs" />
+    <Compile Include="IHttpRequestSender.cs" />
+    <Compile Include="Internal\FormatAttribute.cs" />
+    <Compile Include="Internal\HttpPostSerializer.cs" />
+    <Compile Include="Internal\OptionalAttribute.cs" />
+    <Compile Include="Internal\RefundRegistration.cs" />
+    <Compile Include="Internal\ResponseSerializer.cs" />
+    <Compile Include="Internal\TestHelper.cs" />
+    <Compile Include="Internal\TransactionRegistration.cs" />
+    <Compile Include="Internal\UnencodedAttribute.cs" />
+    <Compile Include="IRefundRegistrar.cs" />
+    <Compile Include="ITransactionRegistrar.cs" />
+    <Compile Include="IUrlResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefundRegistrar.cs" />
+    <Compile Include="RefundResponse.cs" />
+    <Compile Include="ResponseType.cs" />
+    <Compile Include="SagePayBinder.cs" />
+    <Compile Include="SagePayResponse.cs" />
+    <Compile Include="ShoppingBasket.cs" />
+    <Compile Include="TransactionRegistrar.cs" />
+    <Compile Include="TransactionRegistrationResponse.cs" />
+    <Compile Include="UrlResolver.cs" />
+    <Compile Include="VspServerMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
