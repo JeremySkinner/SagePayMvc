@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagePayMvc", "src\SagePayMvc\SagePayMvc.csproj", "{9A130697-C90F-4CDA-96B3-DC5C76D40114}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagePayMvc.Tests", "src\SagePayMvc.Tests\SagePayMvc.Tests.csproj", "{A5BB793D-DAE5-4B79-B158-79A302EC678C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A130697-C90F-4CDA-96B3-DC5C76D40114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A130697-C90F-4CDA-96B3-DC5C76D40114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A130697-C90F-4CDA-96B3-DC5C76D40114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A130697-C90F-4CDA-96B3-DC5C76D40114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BB793D-DAE5-4B79-B158-79A302EC678C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BB793D-DAE5-4B79-B158-79A302EC678C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BB793D-DAE5-4B79-B158-79A302EC678C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BB793D-DAE5-4B79-B158-79A302EC678C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
