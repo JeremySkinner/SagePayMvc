@@ -19,6 +19,8 @@ target deploy:
 	mkdir('build')
 	mkdir("build\\${configuration}")
 	exec("xcopy src\\SagePayMvc\\bin\\${configuration}\\SagePayMvc.dll build\\${configuration}")
+	exec("xcopy src\\SagePayMvc\\bin\\${configuration}\\SagePayMvc.xml build\\${configuration}")
+	exec("xcopy src\\SagePayMvc\\bin\\${configuration}\\SagePayMvc.pdb build\\${configuration}")
 	exec("xcopy License.txt build\\${configuration}")
 	exec("xcopy readme.txt build\\${configuration}")
 
