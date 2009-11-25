@@ -60,7 +60,7 @@ namespace SagePayMvc.Tests {
 
 			result.ExecuteResult(controller.ControllerContext);
 			var output = context.Object.Response.Output.ToString();
-			output.ShouldStartWith("Status=OK\r\n");
+			output.ShouldStartWith("Status=OK" + Environment.NewLine);
 		}
 
 		[Test]
@@ -69,7 +69,7 @@ namespace SagePayMvc.Tests {
 
 			result.ExecuteResult(controller.ControllerContext);
 			var output = context.Object.Response.Output.ToString();
-			output.ShouldStartWith("Status=INVALID\r\n");
+			output.ShouldStartWith("Status=INVALID" + Environment.NewLine);
 		}
 
 		[Test]
@@ -77,7 +77,7 @@ namespace SagePayMvc.Tests {
 			response.Status = ResponseType.Ok;
 
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 			output[1].ShouldEqual("RedirectURL=" + StubUrlResolver.SuccessUrl);
 		}
 
@@ -86,7 +86,7 @@ namespace SagePayMvc.Tests {
 			response.Status = ResponseType.Authenticated;
 
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 			output[1].ShouldEqual("RedirectURL=" + StubUrlResolver.SuccessUrl);
 		}
 
@@ -95,7 +95,7 @@ namespace SagePayMvc.Tests {
 			response.Status = ResponseType.Registered;
 
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 			output[1].ShouldEqual("RedirectURL=" + StubUrlResolver.SuccessUrl);
 		}
 
@@ -104,7 +104,7 @@ namespace SagePayMvc.Tests {
 			response.Status = ResponseType.Error;
 
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 			output[1].ShouldEqual("RedirectURL=" + StubUrlResolver.FailUrl);
 		}
 	}

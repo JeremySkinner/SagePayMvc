@@ -57,20 +57,20 @@ namespace SagePayMvc.Tests {
 		public void Sets_status_to_invalid() {
 			result.ExecuteResult(controller.ControllerContext);
 			var output = context.Object.Response.Output.ToString();
-			output.ShouldStartWith("Status=INVALID\r\n");
+			output.ShouldStartWith("Status=INVALID" + Environment.NewLine);
 		}
 
 		[Test]
 		public void Sets_redirectUrl() {
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] {Environment.NewLine}, StringSplitOptions.None);
 			output[1].ShouldEqual("RedirectURL=" + StubUrlResolver.FailUrl);
 		}
 
 		[Test]
 		public void Sets_statusDetail() {
 			result.ExecuteResult(controller.ControllerContext);
-			var output = context.Object.Response.Output.ToString().Split(new[] {"\r\n"}, StringSplitOptions.None);
+			var output = context.Object.Response.Output.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 			output[2].ShouldEqual("StatusDetail=Cannot match the MD5 Hash. Order might be tampered with.");
 		}
 	}
