@@ -71,7 +71,7 @@ namespace SagePayMvc.Tests {
 		[Test]
 		public void When_VatMultiplier_not_specified_the_default_is_used() {
 			var configuration = new Configuration();
-			configuration.VatMultiplier.ShouldEqual(1.15);
+			configuration.VatMultiplier.ShouldEqual(1.175);
 		}
 
 		[Test]
