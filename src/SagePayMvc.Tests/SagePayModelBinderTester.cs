@@ -28,7 +28,7 @@ namespace SagePayMvc.Tests {
 
 		SagePayBinder SetupBinder(FormCollection post) {
 			bindingContext = new ModelBindingContext {
-				ModelType = typeof(SagePayResponse),
+				ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(null, typeof(SagePayResponse)),
 				ValueProvider = post.ToValueProvider()
 			};
 

@@ -67,16 +67,18 @@ namespace SagePayMvc {
 			return response;
 		}
 
-		ResponseType GetStatus(IDictionary<string, ValueProviderResult> valueProvider) {
+		ResponseType GetStatus(IValueProvider valueProvider) {
 			string value = GetFormField(Status, valueProvider);
 			return ResponseSerializer.ConvertStringToSagePayResponseType(value);
 		}
 
-		string GetFormField(string key, IDictionary<string, ValueProviderResult> provider) {
-			ValueProviderResult result;
-			if (provider.TryGetValue(key, out result)) {
-				return (string) result.ConvertTo(typeof (string));
+		string GetFormField(string key, IValueProvider provider) {
+			ValueProviderResult result = provider.GetValue(key);
+
+			if(result != null) {
+				return (string)result.ConvertTo(typeof(string));
 			}
+
 			return null;
 		}
 	}
