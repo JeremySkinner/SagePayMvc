@@ -6,9 +6,11 @@ namespace SagePayMvc.Sample.Controllers {
 	public class BasketController : Controller {
 		IShoppingBasket _basket;
 		IProductRepository _productRepository;
+		ITransactionService _transactionService;
 
-		public BasketController(IShoppingBasket basket, IProductRepository productRepository) {
+		public BasketController(IShoppingBasket basket, IProductRepository productRepository, ITransactionService transactionService) {
 			_basket = basket;
+			_transactionService = transactionService;
 			_productRepository = productRepository;
 		}
 
@@ -28,8 +30,10 @@ namespace SagePayMvc.Sample.Controllers {
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult Checkout() {
-			return Content("Checking out");
+		public ActionResult Checkout(User user) {
+			// Register the transaction with SagePay and send the user to the SagePay site.
+			var transaction = _transactionService.SendTransaction(_basket, ControllerContext.RequestContext, user);
+			return Redirect(transaction.NextURL);
 		}
 	}
 }

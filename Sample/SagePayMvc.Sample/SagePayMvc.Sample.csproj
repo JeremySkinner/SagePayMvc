@@ -70,18 +70,25 @@
   <ItemGroup>
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentResponseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderRepository.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductRepository.cs" />
-    <Compile Include="Models\ShoppingBasket.cs" />
+    <Compile Include="Models\StoreShoppingBasket.cs" />
+    <Compile Include="Models\TransactionRegistrationService.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMapControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Views\Basket\Index.aspx" />
+    <Content Include="Views\PaymentResponse\Failed.aspx" />
+    <Content Include="Views\PaymentResponse\Success.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

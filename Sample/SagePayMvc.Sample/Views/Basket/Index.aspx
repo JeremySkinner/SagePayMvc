@@ -25,7 +25,17 @@
 	</table>
 
 	<form method="post" action="<%: Url.Action("Checkout") %>">
+		<p>
+			Forename: <%: Html.TextBox("Forename") %>
+		</p>
+		<p>Surname: <%: Html.TextBox("Surname") %></p>
+		<p>Address line 1: <%: Html.TextBox("Address1") %></p>
+		<p>Address line 2: <%: Html.TextBox("Address2") %></p>
+		<p>Town: <%: Html.TextBox("Town") %></p>
+		<p>County: <%: Html.TextBox("County") %></p>
+		<p>Postcode: <%: Html.TextBox("Postcode") %></p>
+		<p>Telephone: <%: Html.TextBox("Telephone") %></p>
+
 		<input type="submit" value="Go to Checkout" />
 	</form>
-
 </asp:Content>
