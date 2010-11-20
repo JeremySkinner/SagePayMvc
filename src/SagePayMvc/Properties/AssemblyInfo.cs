@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SagePayMvc")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SagePay integration for ASP.NET MVC")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("The Sixth Form College Farnborough")]
 [assembly: AssemblyProduct("SagePayMvc")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCopyright("Copyright © The Sixth Form College Farnborough")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
