@@ -8,6 +8,7 @@ namespace SagePayMvc.Sample {
 	public class MvcApplication : System.Web.HttpApplication {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.IgnoreRoute("favicon.ico");
 
 			routes.MapRoute(
 				"Default", // Route name
@@ -29,10 +30,14 @@ namespace SagePayMvc.Sample {
 				cfg.For<IProductRepository>().Use<ProductRepository>();
 				cfg.For<IShoppingBasket>().Use<StoreShoppingBasket>();
 				cfg.For<IOrderRepository>().Use<OrderRepository>();
+				cfg.For<ITransactionService>().Use<TransactionService>();
 
-				// These types are in the SagePayMvc library itself.
+				// The following types are defined in the SagePayMvc library itself.
 				// They are DI-friendly, but you don't *have* to use a container if you don't want to.
 				cfg.For<ITransactionRegistrar>().Use<TransactionRegistrar>();
+				cfg.For<IUrlResolver>().Use<DefaultUrlResolver>();
+				cfg.For<IHttpRequestSender>().Use<HttpRequestSender>();
+				cfg.For<SagePayMvc.Configuration>().Use(() => SagePayMvc.Configuration.Current);
 			});
 
 			ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());

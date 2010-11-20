@@ -6,11 +6,11 @@ namespace SagePayMvc.Sample.Models {
 		TransactionRegistrationResponse SendTransaction(IShoppingBasket storeBasket, RequestContext context, User user);
 	}
 
-	public class TransactionRegistrationService : ITransactionService {
+	public class TransactionService : ITransactionService {
 		private ITransactionRegistrar _transactionRegistrar;
-		IOrderRepository _orderRepository;
+		private IOrderRepository _orderRepository;
 
-		public TransactionRegistrationService(ITransactionRegistrar transactionRegistrar, IOrderRepository orderRepository) {
+		public TransactionService(ITransactionRegistrar transactionRegistrar, IOrderRepository orderRepository) {
 			_transactionRegistrar = transactionRegistrar;
 			_orderRepository = orderRepository;
 		}

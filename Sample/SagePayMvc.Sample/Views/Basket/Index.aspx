@@ -24,17 +24,46 @@
 		</tr>
 	</table>
 
+	<h2>Shipping Details</h2>
+
+
+
 	<form method="post" action="<%: Url.Action("Checkout") %>">
-		<p>
-			Forename: <%: Html.TextBox("Forename") %>
-		</p>
-		<p>Surname: <%: Html.TextBox("Surname") %></p>
-		<p>Address line 1: <%: Html.TextBox("Address1") %></p>
-		<p>Address line 2: <%: Html.TextBox("Address2") %></p>
-		<p>Town: <%: Html.TextBox("Town") %></p>
-		<p>County: <%: Html.TextBox("County") %></p>
-		<p>Postcode: <%: Html.TextBox("Postcode") %></p>
-		<p>Telephone: <%: Html.TextBox("Telephone") %></p>
+		<table>
+			<tr>
+				<td>Forename:</td>
+				<td><%: Html.TextBox("Forename") %></td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td><%: Html.TextBox("Surname") %></td>
+			</tr>
+			<tr>
+				<td>Address line 1:</td>
+				<td><%: Html.TextBox("Address1") %></td>
+			</tr>
+			<tr>
+				<td>Address line 2:</td>
+				<td><%: Html.TextBox("Address2") %></td>
+			</tr>
+			<tr>
+				<td>Town:</td>
+				<td><%: Html.TextBox("Town") %></td>
+			</tr>
+			<tr>
+				<td>County:</td>
+				<td><%: Html.TextBox("County") %></td>
+			</tr>
+			<tr>
+				<td>Postcode:</td>
+				<td><%: Html.TextBox("Postcode") %></td>
+			</tr>
+
+			<tr>
+				<td>Telephone:</td>
+				<td><%: Html.TextBox("Telephone") %></td>
+			</tr>
+		</table>
 
 		<input type="submit" value="Go to Checkout" />
 	</form>
