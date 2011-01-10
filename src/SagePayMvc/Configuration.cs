@@ -32,7 +32,7 @@ namespace SagePayMvc {
 		public const string DefaultControllerName = "PaymentResponse";
 		public const string DefaultFailedAction = "Failed";
 		public const string DefaultSuccessAction = "Success";
-		public const decimal DefaultVatMultiplier = 1.175m;
+		public const decimal DefaultVatMultiplier = 1.2m;
 		public const string DefaultResponseAction = "Index";
 
 		public const string LiveUrl = "https://live.sagepay.com/gateway/service/vspserver-register.vsp";
