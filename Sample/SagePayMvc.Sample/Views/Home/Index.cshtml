@@ -1,0 +1,16 @@
+﻿@model SagePayMvc.Sample.Models.Product[]
+@{
+    ViewBag.Title = "Home Page";   
+}
+
+    <p>
+		This site is a small example of using SagePayMvc within an ASP.NET MVC 2 application.
+    </p>
+	<p>
+		Click a product to add it to your shopping basket.
+	</p>
+	<ul>
+		@foreach (var product in Model) {
+			<li>@Html.ActionLink(product.Name, "Add", "Basket", new{id=product.Id},null) - @product.Price.ToString("C")</li>
+		}
+	</ul>

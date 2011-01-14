@@ -1,0 +1,66 @@
+@model SagePayMvc.Sample.Models.ShoppingBasketItem[]
+<h2>Shopping Basket Contents</h2>
+<table>
+	<tr>
+		<th>Product</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Subtotal</th>
+		<th>&nbsp;</th>
+	</tr>
+	@foreach (var basketItem in Model) {
+	<tr>
+		<td>@basketItem.Product.Name</td>
+		<td>@basketItem.Product.Price.ToString("C")</td>
+		<td>@basketItem.Quantity 	</td>
+		<td>@basketItem.Price.ToString("C") 	</td>
+		<td>@Html.ActionLink("Remove", "Remove", new{id=basketItem.Id})</td>
+	</tr>
+	} 	
+	<tr>
+		<th colspan="4">Total</th>
+		<td>@Model.Sum(x => x.Price).ToString("C") 	</td>
+	</tr>
+</table>
+
+<h2>Shipping Details</h2>
+
+<form method="post" action="@Url.Action("Checkout")">
+	<table>
+		<tr>
+			<td>Forename:</td>
+			<td>@Html.TextBox("Forename")</td>
+		</tr>
+		<tr>
+			<td>Surname:</td>
+			<td>@Html.TextBox("Surname") 	</td>
+		</tr>
+		<tr>
+			<td>Address line 1:</td>
+			<td>@Html.TextBox("Address1") 	</td>
+		</tr>
+		<tr>
+			<td>Address line 2:</td>
+			<td>@Html.TextBox("Address2") 	</td>
+		</tr>
+		<tr>
+			<td>Town:</td>
+			<td>@Html.TextBox("Town") 	</td>
+		</tr>
+		<tr>
+			<td>County:</td>
+			<td>@Html.TextBox("County") 	</td>
+		</tr>
+		<tr>
+			<td>Postcode:</td>
+			<td>@Html.TextBox("Postcode") 	</td>
+		</tr>
+
+		<tr>
+			<td>Telephone:</td>
+			<td>@Html.TextBox("Telephone") 	</td>
+		</tr>
+	</table>
+
+	<input type="submit" value="Go to Checkout" />
+</form>
