@@ -7,7 +7,7 @@ target default, (compile, test, deploy, package):
 
 desc "Compiles solution"	
 target compile:
-	msbuild(file: solution_file, configuration: configuration)
+	msbuild(file: solution_file, configuration: configuration, version: "4.0")
 
 desc "Executes unit tests"
 target test:
