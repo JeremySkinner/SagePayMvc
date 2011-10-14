@@ -1,5 +1,4 @@
-#region License
-
+﻿#region License
 // Copyright 2009 The Sixth Form College Farnborough (http://www.farnborough.ac.uk)
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -15,17 +14,11 @@
 // limitations under the License.
 // 
 // The latest version of this file can be found at http://github.com/JeremySkinner/SagePayMvc
-
 #endregion
 
-using System.Web.Routing;
-
 namespace SagePayMvc {
-	public interface ITransactionRegistrar {
-		/// <summary>
-		/// Sends a transaction registration to SagePay and receives a TransactionRegistrationResponse
-		/// </summary>
-		TransactionRegistrationResponse Send(RequestContext context, string vendorTxCode, ShoppingBasket basket,
-		                                     Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile);
-	}
+    public enum PaymentFormProfile {
+        Low,
+        Normal
+    }
 }
