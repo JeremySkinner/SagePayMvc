@@ -121,6 +121,14 @@ namespace SagePayMvc.Tests {
 		}
 
 		[Test]
+		public void Using_alternate_currency() {
+			string actual = null;
+			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
+			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", currencyCode: "EUR");
+			StringAssert.Contains("Currency=EUR", actual);
+		}
+
+		[Test]
 		public void Deserialzies_result() {
 			string sagePayResponse = "VPSProtocol=2.23\r\nStatus=AUTHENTICATED\r\nStatusDetail=detail goes here\r\nVPSTxId=12345\r\nSecurityKey=abcde\r\nNextURL=http://foo.com";
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Returns(sagePayResponse);

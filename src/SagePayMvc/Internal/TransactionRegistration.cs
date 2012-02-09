@@ -29,10 +29,9 @@ namespace SagePayMvc.Internal {
 		readonly Address deliveryAddress;
 		readonly string customerEMail;
 		readonly string vendorName;
+		readonly string currency;
 
-		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl,
-		                               Address billingAddress, Address deliveryAddress, string customerEmail,
-		                               string vendorName) {
+		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl, Address billingAddress, Address deliveryAddress, string customerEmail, string vendorName, string currencyCode) {
 			VendorTxCode = vendorTxCode;
 			NotificationURL = notificationUrl;
 			this.basket = basket;
@@ -40,6 +39,7 @@ namespace SagePayMvc.Internal {
 			this.deliveryAddress = deliveryAddress;
 			customerEMail = customerEmail;
 			this.vendorName = vendorName;
+			this.currency = currencyCode;
 		}
 
 		public string VPSProtocol {
@@ -61,9 +61,8 @@ namespace SagePayMvc.Internal {
 			get { return basket.Total; }
 		}
 
-		//NOTE: Only supports GBP
 		public string Currency {
-			get { return "GBP"; }
+			get { return currency; }
 		}
 
 		public string Description {
