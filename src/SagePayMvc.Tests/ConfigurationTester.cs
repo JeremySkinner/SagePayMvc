@@ -18,11 +18,27 @@
 
 #endregion
 
+using System.Globalization;
+using System.Threading;
 using NUnit.Framework;
 
 namespace SagePayMvc.Tests {
 	[TestFixture]
 	public class ConfigurationTester {
+
+		[SetUp]
+		public void Setup() {
+			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
+			Configuration.Configure(null);
+		}
+
+		[TearDown]
+		public void Teardown() {
+			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
+		}
+
 		[Test]
 		public void Loads_configuration_from_config_file() {
 			var configuration = Configuration.Current;
@@ -34,7 +50,7 @@ namespace SagePayMvc.Tests {
 			configuration.SuccessController.ShouldEqual("success-controller");
 			configuration.FailedAction.ShouldEqual("failed-action");
 			configuration.FailedController.ShouldEqual("failed-controller");
-			configuration.VatMultiplier.ShouldEqual(5);
+			configuration.VatMultiplier.ShouldEqual(2.5);
 			configuration.VendorName.ShouldEqual("MyVendor");
 		}
 
@@ -87,6 +103,15 @@ namespace SagePayMvc.Tests {
 			Configuration.Current.ShouldBeTheSameAs(config);
 
 			Configuration.Configure(null);
+		}
+
+		[Test]
+		public void Correctly_reads_multiplier_with_other_culture() {
+				Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
+				Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
+
+				Configuration.Current.VatMultiplier.ShouldEqual(2.5m);
+
 		}
 	}
 }

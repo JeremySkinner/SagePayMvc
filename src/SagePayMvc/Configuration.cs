@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.Linq.Expressions;
 
 namespace SagePayMvc {
@@ -28,6 +29,8 @@ namespace SagePayMvc {
 	/// Configuration data
 	/// </summary>
 	public class Configuration {
+		public static CultureInfo CultureForTransactionEncoding = new CultureInfo("en-gb");
+
 		public const string ProtocolVersion = "2.23";
 		public const string DefaultControllerName = "PaymentResponse";
 		public const string DefaultFailedAction = "Failed";
@@ -249,7 +252,7 @@ namespace SagePayMvc {
 			                                      	FailedAction = GetValue(x => x.FailedAction, section),
 			                                      	SuccessController = GetValue(x => x.SuccessController, section),
 			                                      	FailedController = GetValue(x => x.FailedController, section),
-			                                      	VatMultiplier = Convert.ToDecimal(GetValue(x => x.VatMultiplier, section) ?? "0"),
+			                                      	VatMultiplier = Convert.ToDecimal(GetValue(x => x.VatMultiplier, section) ?? "0", CultureInfo.InvariantCulture),
 			                                      	VendorName = GetValue(x => x.VendorName, section),
 			                                      	Mode = (VspServerMode) Enum.Parse(typeof (VspServerMode), (GetValue(x => x.Mode, section) ?? "Simulator"))
 			                                      };
