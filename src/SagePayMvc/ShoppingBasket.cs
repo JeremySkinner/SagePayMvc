@@ -20,6 +20,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -94,13 +95,13 @@ namespace SagePayMvc {
 				builder.Append(":");
 				builder.Append(item.Quantity);
 				builder.Append(":");
-				builder.AppendFormat("{0:F2}", item.ItemPrice);
+				builder.AppendFormat(CultureInfo.InvariantCulture, "{0:F2}", item.ItemPrice);
 				builder.Append(":");
-				builder.AppendFormat("{0:F2}", item.ItemTax);
+				builder.AppendFormat(CultureInfo.InvariantCulture, "{0:F2}", item.ItemTax);
 				builder.Append(":");
-				builder.AppendFormat("{0:F2}", item.ItemTotal);
+				builder.AppendFormat(CultureInfo.InvariantCulture, "{0:F2}", item.ItemTotal);
 				builder.Append(":");
-				builder.AppendFormat("{0:F2}", item.LineTotal);
+				builder.AppendFormat(CultureInfo.InvariantCulture, "{0:F2}", item.LineTotal);
 			}
 
 			return builder.ToString();

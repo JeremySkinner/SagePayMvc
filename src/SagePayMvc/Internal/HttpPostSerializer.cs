@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -45,7 +46,8 @@ namespace SagePayMvc.Internal {
 				if (rawValue == null && IsOptional(property)) continue;
 
 				var format = GetFormat(property);
-				string convertedValue = string.Format(format, rawValue);
+				// Always use EN-GB
+				string convertedValue = string.Format(CultureInfo.InvariantCulture, format, rawValue);
 
 				if (ShouldEncode(property)) {
 					convertedValue = HttpUtility.UrlEncode(convertedValue, Encoding.GetEncoding("ISO-8859-15"));

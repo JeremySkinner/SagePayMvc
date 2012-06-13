@@ -46,7 +46,7 @@ namespace SagePayMvc {
 		}
 
 		public TransactionRegistrationResponse Send(RequestContext context, string vendorTxCode, ShoppingBasket basket,
-		                                            Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile) {
+		                                            Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile, string currencyCode="GBP") {
 			string sagePayUrl = configuration.RegistrationUrl;
 			string notificationUrl = urlResolver.BuildNotificationUrl(context);
 
@@ -54,7 +54,7 @@ namespace SagePayMvc {
 				vendorTxCode, basket, notificationUrl,
 				billingAddress, deliveryAddress, customerEmail,
 				configuration.VendorName,
-                paymentFormProfile);
+                paymentFormProfile, currencyCode);
 
 			var serializer = new HttpPostSerializer();
 			var postData = serializer.Serialize(registration);
