@@ -115,7 +115,7 @@ namespace SagePayMvc.Tests {
 
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
 
-			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com");
+            registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal);
 
 			actual.ShouldEqual(expected);
 		}
@@ -124,7 +124,7 @@ namespace SagePayMvc.Tests {
 		public void Using_alternate_currency() {
 			string actual = null;
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
-			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", currencyCode: "EUR");
+			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal, currencyCode: "EUR");
 			StringAssert.Contains("Currency=EUR", actual);
 		}
 
