@@ -29,9 +29,15 @@ namespace SagePayMvc.Internal {
 		readonly Address deliveryAddress;
 		readonly string customerEMail;
 		readonly string vendorName;
+	    readonly string profile;
 		readonly string currency;
 
-		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl, Address billingAddress, Address deliveryAddress, string customerEmail, string vendorName, string currencyCode) {
+	    const string NormalFormMode = "NORMAL";
+        const string LowProfileFormMode = "LOW";
+
+		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl,
+		                               Address billingAddress, Address deliveryAddress, string customerEmail,
+		                               string vendorName, PaymentFormProfile paymentFormProfile, string currencyCode) {
 			VendorTxCode = vendorTxCode;
 			NotificationURL = notificationUrl;
 			this.basket = basket;
@@ -39,6 +45,14 @@ namespace SagePayMvc.Internal {
 			this.deliveryAddress = deliveryAddress;
 			customerEMail = customerEmail;
 			this.vendorName = vendorName;
+		    switch (paymentFormProfile) {
+		        case PaymentFormProfile.Low:
+		            profile = LowProfileFormMode;
+		            break;
+                default:
+		            profile = NormalFormMode;
+		            break;
+		    }
 			this.currency = currencyCode;
 		}
 
@@ -168,7 +182,7 @@ namespace SagePayMvc.Internal {
 		}
 
 		public string Profile {
-			get { return "NORMAL"; }
+			get { return profile; }
 		}
 	}
 }

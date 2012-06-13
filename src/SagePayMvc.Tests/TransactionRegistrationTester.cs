@@ -92,7 +92,7 @@ namespace SagePayMvc.Tests {
 
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
 
-			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com");
+			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal);
 
 			actual.ShouldEqual(expected);
 		}
@@ -115,7 +115,7 @@ namespace SagePayMvc.Tests {
 
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
 
-			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com");
+            registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal);
 
 			actual.ShouldEqual(expected);
 		}
@@ -124,7 +124,7 @@ namespace SagePayMvc.Tests {
 		public void Using_alternate_currency() {
 			string actual = null;
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
-			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", currencyCode: "EUR");
+			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal, currencyCode: "EUR");
 			StringAssert.Contains("Currency=EUR", actual);
 		}
 
@@ -133,7 +133,7 @@ namespace SagePayMvc.Tests {
 			string sagePayResponse = "VPSProtocol=2.23\r\nStatus=AUTHENTICATED\r\nStatusDetail=detail goes here\r\nVPSTxId=12345\r\nSecurityKey=abcde\r\nNextURL=http://foo.com";
 			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Returns(sagePayResponse);
 
-			var result = registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com");
+			var result = registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Normal);
 			result.NextURL.ShouldEqual("http://foo.com");
 			result.VPSProtocol.ShouldEqual("2.23");
 			result.Status.ShouldEqual(ResponseType.Authenticated);
@@ -141,5 +141,16 @@ namespace SagePayMvc.Tests {
 			result.VPSTxId.ShouldEqual("12345");
 			result.SecurityKey.ShouldEqual("abcde");
 		}
+
+        [Test]
+        public void Sets_profile_correctly() {
+            string actual = null;
+
+            requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
+
+            registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Low);
+
+            actual.ShouldContain("Profile=LOW");
+        }
 	}
 }

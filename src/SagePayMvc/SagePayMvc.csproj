@@ -67,6 +67,7 @@
     <Compile Include="BasketItem.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DefaultUrlResolver.cs" />
+    <Compile Include="PaymentFormProfile.cs" />
     <Compile Include="HttpRequestSender.cs" />
     <Compile Include="IHttpRequestSender.cs" />
     <Compile Include="Internal\FormatAttribute.cs" />
