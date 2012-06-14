@@ -46,5 +46,9 @@ namespace SagePayMvc.Tests {
 		public static void ShouldBeTheSameAs(this object actual, object expected) {
 			Assert.AreSame(expected, actual);
 		}
+
+        public static void ShouldContain(this string actual, string expected) {
+            StringAssert.Contains(expected, actual);
+        }
 	}
 }
