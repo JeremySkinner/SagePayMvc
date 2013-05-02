@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>SagePayMvc</id>
+    <version></version>
+    <authors>Jeremy Skinner</authors>
+    <licenseUrl>https://github.com/JeremySkinner/SagePayMvc/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/JeremySkinner/SagepayMvc</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SagePay VSP Server integration for ASP.NET MVC</description>
+    <summary>SagePay VSP Server integration for ASP.NET MVC.</summary>    
+    <language>en-US</language>
+  </metadata>
+</package>
