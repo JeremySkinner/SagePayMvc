@@ -53,9 +53,28 @@ namespace SagePayMvc {
 		string successController = DefaultControllerName;
 		string failedController = DefaultControllerName;
 		decimal vatMultiplier = DefaultVatMultiplier;
+		string protocol = "http";
 
 		string vendorName;
 		string notificationHostName;
+
+
+		/// <summary>
+		/// The Protocol to use (http or https). Default is http. 
+		/// </summary>
+		public string Protocol {
+			get { return protocol; }
+			set {
+				if (!string.IsNullOrEmpty(value)) {
+
+					if(value != "http" && value != "https")
+					{
+						throw new NotSupportedException("Protocol '{0}' is not supported. Allowed values are http or https");
+					}
+					protocol  = value;
+				}
+			}
+		}
 
 		/// <summary>
 		/// Vendor name. This is required.
@@ -252,6 +271,7 @@ namespace SagePayMvc {
 			                                      	FailedAction = GetValue(x => x.FailedAction, section),
 			                                      	SuccessController = GetValue(x => x.SuccessController, section),
 			                                      	FailedController = GetValue(x => x.FailedController, section),
+													Protocol = GetValue(x => x.Protocol, section),
 			                                      	VatMultiplier = Convert.ToDecimal(GetValue(x => x.VatMultiplier, section) ?? "0", CultureInfo.InvariantCulture),
 			                                      	VendorName = GetValue(x => x.VendorName, section),
 			                                      	Mode = (VspServerMode) Enum.Parse(typeof (VspServerMode), (GetValue(x => x.Mode, section) ?? "Simulator"))

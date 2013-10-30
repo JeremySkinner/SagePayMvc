@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Security.Policy;
 using System.Web.Mvc;
 using System.Web.Routing;
 using NUnit.Framework;
@@ -71,6 +72,14 @@ namespace SagePayMvc.Tests {
 
 		[Test]
 		public void Uses_raw_notification_url_if_notification_controller_null() {
+		}
+
+		[Test]
+		public void Uses_https() {
+			Configuration.Current.Protocol = "https";
+			var url = resolver.BuildSuccessfulTransactionUrl(context.RequestContext, "foo");
+			Configuration.Current.Protocol = "http";
+			url.ShouldEqual("https://foo.com/PaymentResponse/Success/foo");
 		}
 	}
 }
