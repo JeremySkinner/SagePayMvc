@@ -35,7 +35,7 @@ namespace SagePayMvc {
 			var urlHelper = new UrlHelper(context);
 			var routeValues = new RouteValueDictionary(new {controller = configuration.FailedController, action = configuration.FailedAction, vendorTxCode});
 
-			string url = urlHelper.RouteUrl(null, routeValues, "http", configuration.NotificationHostName);
+            string url = urlHelper.RouteUrl(null, routeValues, configuration.Protocol, configuration.NotificationHostName);
 			return url;
 		}
 
