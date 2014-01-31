@@ -26,6 +26,7 @@ namespace SagePayMvc {
 		/// Sends a transaction registration to SagePay and receives a TransactionRegistrationResponse
 		/// </summary>
 		TransactionRegistrationResponse Send(RequestContext context, string vendorTxCode, ShoppingBasket basket,
-		                                     Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile = PaymentFormProfile.Normal, string currencyCode = "GBP");
+		                                     Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile = PaymentFormProfile.Normal, string currencyCode = "GBP",
+                                             		MerchantAccountType accountType = MerchantAccountType.Ecommerce);
 	}
 }
