@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MerchantAccountType.cs" />
     <Compile Include="ActionResults\ErrorResult.cs" />
     <Compile Include="ActionResults\InvalidSignatureResult.cs" />
     <Compile Include="ActionResults\SagePayResult.cs" />
