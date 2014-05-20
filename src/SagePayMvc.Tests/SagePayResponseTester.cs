@@ -43,9 +43,16 @@ namespace SagePayMvc.Tests {
 			response.IsSignatureValid(TestHelper.ValidSecurityKey, TestHelper.VendorName).ShouldBeFalse();
 		}
 
-		[Test]
-		public void Returns_true_for_valid_signature() {
-			response.IsSignatureValid(TestHelper.ValidSecurityKey, TestHelper.VendorName).ShouldBeTrue();
-		}
+        [Test]
+        public void Returns_true_for_valid_signature()
+        {
+            response.IsSignatureValid(TestHelper.ValidSecurityKey, TestHelper.VendorName).ShouldBeTrue();
+        }
+
+        [Test]
+        public void Returns_true_for_valid_signature_vendorname_always_lowercase()
+        {
+            response.IsSignatureValid(TestHelper.ValidSecurityKey, TestHelper.VendorNameWithCaps).ShouldBeTrue();
+        }
 	}
 }
