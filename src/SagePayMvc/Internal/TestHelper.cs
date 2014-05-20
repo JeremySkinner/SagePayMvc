@@ -25,7 +25,8 @@ namespace SagePayMvc.Internal {
 	public static class TestHelper {
 		public const string ValidSecurityKey = "testkey123";
 		public const string ValidSignature = "46EAE2D06815F3406C41776422711985";
-		public const string VendorName = "testvendor";
+        public const string VendorName = "testvendor";
+        public const string VendorNameWithCaps = "TestVendor";
 
 		public static SagePayResponse CreateValidResponse() {
 			return new SagePayResponse {

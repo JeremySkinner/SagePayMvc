@@ -73,7 +73,7 @@ namespace SagePayMvc {
 			builder.Append(VendorTxCode);
 			builder.Append(Status.ToString().ToUpper());
 			builder.Append(TxAuthNo);
-			builder.Append(vendorName);
+			builder.Append(vendorName.ToLower());
 			builder.Append(AVSCV2);
 			builder.Append(securityKey);
 			builder.Append(AddressResult);
