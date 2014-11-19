@@ -21,7 +21,7 @@
  	</Target>
 
 	<Target Name="Test">
-		<NUnit Assemblies="$(TestAssemblies)" ToolPath="$(BaseDir)\lib\nunit"  />
+		<NUnit Assemblies="$(TestAssemblies)" ToolPath="$(BaseDir)\packages\nunit.runners.2.6.3\tools" Framework="net-4.0" />
 	</Target>
 
   <Target Name="Deploy">
@@ -51,7 +51,7 @@
 			Value="%(AsmInfo.Version)" />
 
     	<Exec WorkingDirectory="$(BuildDir)" 
-					Command="$(BaseDir)\lib\nuget\nuget.exe pack $(BuildDir)\temp\SagePayMvc\SagePayMvc.nuspec" />
+					Command="$(BaseDir)\.nuget\nuget.exe pack $(BuildDir)\temp\SagePayMvc\SagePayMvc.nuspec" />
 		
 		
 		<RemoveDir Directories="$(BuildDir)\temp" />
