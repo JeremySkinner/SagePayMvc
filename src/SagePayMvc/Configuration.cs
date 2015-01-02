@@ -31,7 +31,7 @@ namespace SagePayMvc {
 	public class Configuration {
 		public static CultureInfo CultureForTransactionEncoding = new CultureInfo("en-gb");
 
-		public const string ProtocolVersion = "2.23";
+		public const string ProtocolVersion = "3.0";
 		public const string DefaultControllerName = "PaymentResponse";
 		public const string DefaultFailedAction = "Failed";
 		public const string DefaultSuccessAction = "Success";
