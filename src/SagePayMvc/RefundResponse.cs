@@ -25,5 +25,6 @@ namespace SagePayMvc {
 		public string VPSTxId { get; set; }
 		public string TxAuthNo { get; set; }
 		public string VPSProtocol { get; set; }
+		public string SecurityKey { get; set; }
 	}
 }
