@@ -44,6 +44,10 @@ namespace SagePayMvc {
 		const string PayerStatus = "PayerStatus";
 		const string CardType = "CardType";
 		const string Last4Digits = "Last4Digits";
+		const string DeclineCode = "DeclineCode";
+		const string ExpiryDate = "ExpiryDate";
+		const string FraudResponse = "FraudResponse";
+		const string BankAuthCode = "BankAuthCode";
 
 		public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) {
 			var response = new SagePayResponse();
@@ -64,6 +68,10 @@ namespace SagePayMvc {
 			response.PayerStatus = GetFormField(PayerStatus, bindingContext.ValueProvider);
 			response.CardType = GetFormField(CardType, bindingContext.ValueProvider);
 			response.Last4Digits = GetFormField(Last4Digits, bindingContext.ValueProvider);
+			response.DeclineCode = GetFormField(DeclineCode, bindingContext.ValueProvider);
+			response.ExpiryDate = GetFormField(ExpiryDate, bindingContext.ValueProvider);
+			response.FraudResponse = GetFormField(FraudResponse, bindingContext.ValueProvider);
+			response.BankAuthCode = GetFormField(BankAuthCode, bindingContext.ValueProvider);
 			return response;
 		}
 

@@ -45,6 +45,11 @@ namespace SagePayMvc {
 		public string PayerStatus { get; set; }
 		public string CardType { get; set; }
 		public string Last4Digits { get; set; }
+		public string DeclineCode { get; set; }
+		public string ExpiryDate { get; set; }
+		public string FraudResponse { get; set; }
+		public string BankAuthCode { get; set; }
+
 
 		/// <summary>
 		/// Was the transaction successful?
@@ -86,6 +91,10 @@ namespace SagePayMvc {
 			builder.Append(PayerStatus);
 			builder.Append(CardType);
 			builder.Append(Last4Digits);
+			builder.Append(DeclineCode);
+			builder.Append(ExpiryDate);
+			builder.Append(FraudResponse);
+			builder.Append(BankAuthCode);
 			var hash = FormsAuthentication.HashPasswordForStoringInConfigFile(builder.ToString(), "MD5");
 			return hash;
 		}
