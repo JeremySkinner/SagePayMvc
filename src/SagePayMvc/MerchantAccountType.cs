@@ -18,9 +18,9 @@
 
 namespace SagePayMvc
 {
-    public enum MerchantAccountType
-    {
-        Ecommerce,
-        MailOrder
-    }
+	public enum MerchantAccountType
+	{
+		Ecommerce,
+		MailOrder
+	}
 }
