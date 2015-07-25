@@ -5,7 +5,7 @@ if "%1"=="PublishPackages" goto publish
 goto end
 
 :publish
-powershell.exe -noprofile buildscripts\publish-nuget-packages.ps1
+powershell.exe -noprofile ./publish-nuget-packages.ps1
 
 goto end
 
