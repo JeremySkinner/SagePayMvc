@@ -38,7 +38,7 @@ namespace SagePayMvc.Tests {
 
 		[Test]
 		public void Creates_correct_post() {
-			string expected = "VPSProtocol=2.23&TxType=REFUND&Vendor=TestVendor&VendorTxCode=REF-foo&Amount=5.00&Currency=GBP";
+			string expected = "VPSProtocol=3.0&TxType=REFUND&Vendor=TestVendor&VendorTxCode=REF-foo&Amount=5.00&Currency=GBP";
 			expected += "&Description=Refund+Reason&RelatedVPSTxId=abc123&RelatedVendorTxCode=def456";
 			expected += "&RelatedSecurityKey=12345&RelatedTxAuthNo=67890";
 
