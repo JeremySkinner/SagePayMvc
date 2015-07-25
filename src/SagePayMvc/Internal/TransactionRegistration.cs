@@ -198,8 +198,8 @@ namespace SagePayMvc.Internal {
 		public string Profile {
 			get { return profile; }
 		}
-		public string AccountType
-		{
+
+		public string AccountType {
 			get { return accountType; }
 		}
 	}
