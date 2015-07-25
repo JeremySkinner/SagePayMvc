@@ -14,7 +14,11 @@
   <UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.Zip" />
 	<UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.XmlUpdate" />
 	
-	<Target Name="default" DependsOnTargets="Compile; Test; Deploy; Package" />
+	<Target Name="default" DependsOnTargets="PackageRestore; Compile; Test; Deploy; Package" />
+	
+  <Target Name="PackageRestore">
+    <Exec Command="$(BaseDir)\.nuget\nuget.exe restore $(SolutionFile)" WorkingDirectory="$(BaseDir)"  />
+	</Target>
 	
 	<Target Name="Compile">
 		<MSBuild Projects="$(SolutionFile)" Properties="Configuration=$(Configuration)"  Targets="Rebuild" />
