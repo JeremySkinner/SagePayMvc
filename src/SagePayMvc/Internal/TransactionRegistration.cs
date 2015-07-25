@@ -29,15 +29,20 @@ namespace SagePayMvc.Internal {
 		readonly Address deliveryAddress;
 		readonly string customerEMail;
 		readonly string vendorName;
-	    readonly string profile;
+		readonly string profile;
+		readonly string accountType;
 		readonly string currency;
 
-	    const string NormalFormMode = "NORMAL";
-        const string LowProfileFormMode = "LOW";
+		const string NormalFormMode = "NORMAL";
+		const string LowProfileFormMode = "LOW";
+
+		const string AccountTypeEcommerce = "E";
+		const string AccountTypeMailOrder = "M";
 
 		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl,
-		                               Address billingAddress, Address deliveryAddress, string customerEmail,
-		                               string vendorName, PaymentFormProfile paymentFormProfile, string currencyCode) {
+							Address billingAddress, Address deliveryAddress, string customerEmail,
+							string vendorName, PaymentFormProfile paymentFormProfile, string currencyCode, 
+							MerchantAccountType accountType) {
 			VendorTxCode = vendorTxCode;
 			NotificationURL = notificationUrl;
 			this.basket = basket;
@@ -45,14 +50,23 @@ namespace SagePayMvc.Internal {
 			this.deliveryAddress = deliveryAddress;
 			customerEMail = customerEmail;
 			this.vendorName = vendorName;
-		    switch (paymentFormProfile) {
-		        case PaymentFormProfile.Low:
-		            profile = LowProfileFormMode;
-		            break;
-                default:
-		            profile = NormalFormMode;
-		            break;
-		    }
+			switch (paymentFormProfile) {
+				case PaymentFormProfile.Low:
+					profile = LowProfileFormMode;
+					break;
+				default:
+					profile = NormalFormMode;
+					break;
+			}
+			switch (accountType)
+			{
+				case MerchantAccountType.MailOrder:
+					this.accountType=AccountTypeMailOrder;
+					break;
+				default:
+					this.accountType = AccountTypeEcommerce;
+					break;
+			}
 			this.currency = currencyCode;
 		}
 
@@ -183,6 +197,10 @@ namespace SagePayMvc.Internal {
 
 		public string Profile {
 			get { return profile; }
+		}
+		public string AccountType
+		{
+			get { return accountType; }
 		}
 	}
 }
