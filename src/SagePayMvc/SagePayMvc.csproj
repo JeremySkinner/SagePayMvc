@@ -117,6 +117,7 @@
     <Compile Include="ShoppingBasket.cs" />
     <Compile Include="TransactionRegistrar.cs" />
     <Compile Include="TransactionRegistrationResponse.cs" />
+    <Compile Include="TxType.cs" />
     <Compile Include="UrlResolver.cs" />
     <Compile Include="VspServerMode.cs" />
   </ItemGroup>
