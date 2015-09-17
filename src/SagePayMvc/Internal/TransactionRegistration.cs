@@ -73,18 +73,7 @@ namespace SagePayMvc.Internal {
 					break;
 			}
 			this.currency = currencyCode;
-			switch (txType)
-			{
-				case SagePayMvc.TxType.Deferred:
-					this.txType = TxTypeDeferred;
-					break;
-				case SagePayMvc.TxType.Authenticate:
-					this.txType = TxTypeAuthenticate;
-					break;
-				default:
-					this.txType = TxTypePayment;
-					break;
-			}
+			this.txType = txType.ToString().ToUpperInvariant();
 		}
 
 		public string VPSProtocol {
