@@ -152,5 +152,16 @@ namespace SagePayMvc.Tests {
 
             actual.ShouldContain("Profile=LOW");
         }
+
+		[Test]
+		public void Sets_tx_type_correctly() {
+			string actual = null;
+
+			requestFactory.Setup(x => x.SendRequest(It.IsAny<string>(), It.IsAny<string>())).Callback(new Action<string, string>((url, post) => { actual = post; }));
+
+			registration.Send(null, "foo", basket, billingAddress, deliveryAddress, "email@address.com", PaymentFormProfile.Low, txType: TxType.Authenticate);
+
+			actual.ShouldContain("TxType=AUTHENTICATE");
+		}
 	}
 }

@@ -32,6 +32,7 @@ namespace SagePayMvc.Internal {
 		readonly string profile;
 		readonly string accountType;
 		readonly string currency;
+		readonly string txType;
 
 		const string NormalFormMode = "NORMAL";
 		const string LowProfileFormMode = "LOW";
@@ -39,10 +40,14 @@ namespace SagePayMvc.Internal {
 		const string AccountTypeEcommerce = "E";
 		const string AccountTypeMailOrder = "M";
 
+		const string TxTypePayment = "PAYMENT";
+		const string TxTypeDeferred = "DEFERRED";
+		const string TxTypeAuthenticate = "AUTHENTICATE";
+
 		public TransactionRegistration(string vendorTxCode, ShoppingBasket basket, string notificationUrl,
 							Address billingAddress, Address deliveryAddress, string customerEmail,
 							string vendorName, PaymentFormProfile paymentFormProfile, string currencyCode, 
-							MerchantAccountType accountType) {
+							MerchantAccountType accountType, TxType txType) {
 			VendorTxCode = vendorTxCode;
 			NotificationURL = notificationUrl;
 			this.basket = basket;
@@ -68,6 +73,7 @@ namespace SagePayMvc.Internal {
 					break;
 			}
 			this.currency = currencyCode;
+			this.txType = txType.ToString().ToUpperInvariant();
 		}
 
 		public string VPSProtocol {
@@ -75,7 +81,7 @@ namespace SagePayMvc.Internal {
 		}
 
 		public string TxType {
-			get { return "PAYMENT"; }
+			get { return txType; }
 		}
 
 		public string Vendor {

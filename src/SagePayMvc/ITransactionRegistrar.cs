@@ -27,6 +27,6 @@ namespace SagePayMvc {
 		/// </summary>
 		TransactionRegistrationResponse Send(RequestContext context, string vendorTxCode, ShoppingBasket basket,
 															Address billingAddress, Address deliveryAddress, string customerEmail, PaymentFormProfile paymentFormProfile = PaymentFormProfile.Normal, string currencyCode = "GBP",
-															MerchantAccountType accountType = MerchantAccountType.Ecommerce);
+															MerchantAccountType accountType = MerchantAccountType.Ecommerce, TxType txType = TxType.Payment);
 	}
 }
