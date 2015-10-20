@@ -35,8 +35,12 @@ namespace SagePayMvc {
 		/// <summary>
 		/// Creates a new instance of the DefaultUrlResolver using the configuration specified in the web.conf.
 		/// </summary>
-		public DefaultUrlResolver() {
-			configuration = Configuration.Current;
+		public DefaultUrlResolver() : this (Configuration.Current) {
+		}
+
+		public DefaultUrlResolver(Configuration configuration)
+		{
+			this.configuration = configuration;
 		}
 
 		public virtual string BuildFailedTransactionUrl(RequestContext context, string vendorTxCode) {
