@@ -47,7 +47,8 @@ namespace SagePayMvc {
 			var urlHelper = new UrlHelper(context);
 			var routeValues = new RouteValueDictionary(new {controller = configuration.FailedController, action = configuration.FailedAction, vendorTxCode});
 
-			string url = urlHelper.RouteUrl(null, routeValues, configuration.Protocol, GetNotificationHostName(context));
+			var hostName = configuration.FailedHostName ?? GetNotificationHostName(context);
+			string url = urlHelper.RouteUrl(null, routeValues, configuration.Protocol, hostName);
 			return url;
 		}
 
@@ -55,7 +56,8 @@ namespace SagePayMvc {
 			var urlHelper = new UrlHelper(context);
 			var routeValues = new RouteValueDictionary(new {controller = configuration.SuccessController, action = configuration.SuccessAction, vendorTxCode});
 
-			string url = urlHelper.RouteUrl(null, routeValues, configuration.Protocol, GetNotificationHostName(context));
+			var hostName = configuration.SuccessHostName ?? GetNotificationHostName(context);
+			string url = urlHelper.RouteUrl(null, routeValues, configuration.Protocol, hostName);
 			return url;
 		}
 
