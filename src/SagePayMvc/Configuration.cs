@@ -94,24 +94,10 @@ namespace SagePayMvc {
 			}
 		}
 
-
 		/// <summary>
-		/// Notification host name. This is required. 
+		/// Notification host name.
 		/// </summary>
-		public string NotificationHostName {
-			get {
-				if (string.IsNullOrEmpty(notificationHostName)) {
-					throw new ArgumentNullException("notificationHostName", "NotificationHostName must be specified in the configuration.");
-				}
-				return notificationHostName;
-			}
-			set {
-				if (string.IsNullOrEmpty(value)) {
-					throw new ArgumentNullException("value", "NotificationHostName must be specified in the configuration.");
-				}
-				notificationHostName = value;
-			}
-		}
+		public string NotificationHostName { get; set; }
 
 		/// <summary>
 		/// Server mode (simulator, test, live)
@@ -141,6 +127,16 @@ namespace SagePayMvc {
 				}
 			}
 		}
+
+		/// <summary>
+		/// Success host name.
+		/// </summary>
+		public string SuccessHostName { get; set; }
+
+		/// <summary>
+		/// Failed host name.
+		/// </summary>
+		public string FailedHostName { get; set; }
 
 		/// <summary>
 		/// Action name to use when generating the success URL. Default is "Success"
@@ -267,6 +263,8 @@ namespace SagePayMvc {
 			                                      	NotificationHostName = GetValue(x => x.NotificationHostName, section),
 			                                      	NotificationController = GetValue(x => x.NotificationController, section),
 			                                      	notificationAction = GetValue(x => x.NotificationAction, section),
+			                                      	SuccessHostName = GetValue(x => x.SuccessHostName, section),
+			                                      	FailedHostName = GetValue(x => x.FailedHostName, section),
 			                                      	SuccessAction = GetValue(x => x.SuccessAction, section),
 			                                      	FailedAction = GetValue(x => x.FailedAction, section),
 			                                      	SuccessController = GetValue(x => x.SuccessController, section),
