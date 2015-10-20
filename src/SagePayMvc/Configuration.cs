@@ -94,24 +94,10 @@ namespace SagePayMvc {
 			}
 		}
 
-
 		/// <summary>
-		/// Notification host name. This is required. 
+		/// Notification host name.
 		/// </summary>
-		public string NotificationHostName {
-			get {
-				if (string.IsNullOrEmpty(notificationHostName)) {
-					throw new ArgumentNullException("notificationHostName", "NotificationHostName must be specified in the configuration.");
-				}
-				return notificationHostName;
-			}
-			set {
-				if (string.IsNullOrEmpty(value)) {
-					throw new ArgumentNullException("value", "NotificationHostName must be specified in the configuration.");
-				}
-				notificationHostName = value;
-			}
-		}
+		public string NotificationHostName { get; set; }
 
 		/// <summary>
 		/// Server mode (simulator, test, live)
