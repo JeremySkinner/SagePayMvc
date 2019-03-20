@@ -1,142 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9A130697-C90F-4CDA-96B3-DC5C76D40114}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SagePayMvc</RootNamespace>
-    <AssemblyName>SagePayMvc</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\SagePayMvc.XML</DocumentationFile>
+    <TargetFrameworks>net45</TargetFrameworks>
+    <Authors>Jeremy Skinner</Authors>
+    <Company>The Sixth Form College Farnborough</Company>
+    <Copyright>Copyright © The Sixth Form College Farnborough and contributors</Copyright>
+    <Description>SagePay VSP Server integration for ASP.NET MVC.</Description>
+    <PackageProjectUrl>https://github.com/JeremySkinner/SagePayMvc</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JeremySkinner/SagePayMvc</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/JeremySkinner/SagePayMvc/blob/master/License.txt</PackageLicenseUrl>
+    <Version>5.1.0.0</Version>
+    <NeutralLanguage>en</NeutralLanguage>
+    <DocumentationFile Condition="'$(Configuration)'=='Release'">bin\$(Configuration)\$(TargetFramework)\SagePayMvc.xml</DocumentationFile>
+    <DebugType>embedded</DebugType>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.6' or '$(TargetFramework)'=='netstandard1.1'">
+    <!--<PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />-->
+    <!--<PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />-->
+    <!--<PackageReference Include="System.ValueTuple" Version="4.5.0" />-->
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\..\Sample\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MerchantAccountType.cs" />
-    <Compile Include="ActionResults\ErrorResult.cs" />
-    <Compile Include="ActionResults\InvalidSignatureResult.cs" />
-    <Compile Include="ActionResults\SagePayResult.cs" />
-    <Compile Include="ActionResults\TransactionNotFoundResult.cs" />
-    <Compile Include="ActionResults\ValidOrderResult.cs" />
-    <Compile Include="Address.cs" />
-    <Compile Include="AddressType.cs" />
-    <Compile Include="BasketItem.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="DefaultUrlResolver.cs" />
-    <Compile Include="PaymentFormProfile.cs" />
-    <Compile Include="HttpRequestSender.cs" />
-    <Compile Include="IHttpRequestSender.cs" />
-    <Compile Include="Internal\FormatAttribute.cs" />
-    <Compile Include="Internal\HttpPostSerializer.cs" />
-    <Compile Include="Internal\OptionalAttribute.cs" />
-    <Compile Include="Internal\RefundRegistration.cs" />
-    <Compile Include="Internal\ResponseSerializer.cs" />
-    <Compile Include="Internal\TestHelper.cs" />
-    <Compile Include="Internal\TransactionRegistration.cs" />
-    <Compile Include="Internal\UnencodedAttribute.cs" />
-    <Compile Include="IRefundRegistrar.cs" />
-    <Compile Include="ITransactionRegistrar.cs" />
-    <Compile Include="IUrlResolver.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefundRegistrar.cs" />
-    <Compile Include="RefundResponse.cs" />
-    <Compile Include="ResponseType.cs" />
-    <Compile Include="SagePayBinder.cs" />
-    <Compile Include="SagePayResponse.cs" />
-    <Compile Include="ShoppingBasket.cs" />
-    <Compile Include="TransactionRegistrar.cs" />
-    <Compile Include="TransactionRegistrationResponse.cs" />
-    <Compile Include="TxType.cs" />
-    <Compile Include="UrlResolver.cs" />
-    <Compile Include="VspServerMode.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
